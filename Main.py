@@ -1,9 +1,9 @@
 import csv
 
-# Inventory dictionary to store items and their details
+
 inventory = {}
 
-# Add item to the inventory
+
 def add_item():
     item_name = input("Enter the item name: ").strip()
     if item_name in inventory:
@@ -20,7 +20,6 @@ def add_item():
     inventory[item_name] = {"quantity": quantity, "price": price}
     print(f"{item_name} added to the inventory.")
 
-# Update item details
 def update_item():
     item_name = input("Enter the item name to update: ").strip()
     if item_name not in inventory:
@@ -37,7 +36,6 @@ def update_item():
     inventory[item_name] = {"quantity": quantity, "price": price}
     print(f"{item_name} updated successfully.")
 
-# Delete item from inventory
 def delete_item():
     item_name = input("Enter the item name to delete: ").strip()
     if item_name in inventory:
@@ -46,7 +44,6 @@ def delete_item():
     else:
         print(f"{item_name} not found in the inventory.")
 
-# View all items in the inventory with total value per item
 def view_inventory():
     if not inventory:
         print("Inventory is empty.")
@@ -57,7 +54,6 @@ def view_inventory():
             print(f"Item: {item_name}, Quantity: {details['quantity']}, Price: ${details['price']:.2f}, Total Amount: ${total_amount:.2f}")
         print()
 
-# Search for an item in the inventory
 def search_item():
     item_name = input("Enter the item name to search: ").strip()
     if item_name in inventory:
@@ -67,7 +63,6 @@ def search_item():
     else:
         print(f"{item_name} not found in the inventory.")
 
-# Alert if item quantity is low
 def restock_alert(threshold=5):
     alert_items = {item_name: details['quantity'] for item_name, details in inventory.items() if details['quantity'] <= threshold}
     if alert_items:
@@ -77,12 +72,12 @@ def restock_alert(threshold=5):
     else:
         print("No items need restocking.")
 
-# Calculate total inventory value
+
 def calculate_total_value():
     total_value = sum(details['quantity'] * details['price'] for details in inventory.values())
     print(f"Total inventory value: ${total_value:.2f}")
 
-# Export inventory to CSV file
+
 def export_to_csv(filename="inventory_export.csv"):
     if not inventory:
         print("Inventory is empty, nothing to export.")
@@ -97,7 +92,7 @@ def export_to_csv(filename="inventory_export.csv"):
 
     print(f"Inventory exported to {filename}")
 
-# Main function to manage inventory
+
 def main():
     while True:
         print("\nInventory Management System")
